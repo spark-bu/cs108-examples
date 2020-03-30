@@ -21,6 +21,6 @@ class RandomQuotePageView(DetailView):
     context_object_name = 'quote'
     def get_object(self):
         all_quotes = Quote.objects.all()
-        r = random.randint(0, len(all_quotes))
+        r = random.randint(0, len(all_quotes)-1)
         q = all_quotes[r]
         return q 
