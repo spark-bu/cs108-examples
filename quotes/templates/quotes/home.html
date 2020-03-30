@@ -1,0 +1,7 @@
+<h1>SHowing all quotes</h1>
+
+<ul>
+    {% for quote in all_quotes_list %}
+    <li>"{{quote.text}}" - {{quote.author}}</li>
+    {% endfor %}
+    </ul>

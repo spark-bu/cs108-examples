@@ -1,0 +1,19 @@
+<h1>Mini Facebook</h1>
+<h2>Showing All Profiles</h2>
+
+<table>
+    {% for profile in all_profile_list %}
+
+    <tr>
+        <th>Name</th>
+        <th>Hometown</th>
+        <th>Image</th>
+    </tr>
+
+    <tr>
+        <td>{{profile.first_name}} {{profile.last_name}}</td>
+        <td>{{profile.city}}</td>
+        <td><img src = "{{profile.profile_image_url}}" style = "max-width: 400;"></td>
+    </tr>
+    {% endfor %}
+</table>
