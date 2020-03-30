@@ -2,6 +2,7 @@
 
 <ul>
     {% for quote in all_quotes_list %}
-    <li>"{{quote.text}}" - {{quote.author}}</li>
+    <li>"{{quote.text}}" - {{quote.author}}</li><br>
+    <img src = "{{quote.image_url" stle = "max-width: 400;">
     {% endfor %}
-    </ul>
+</ul>
