@@ -7,7 +7,6 @@
 <h2>Status Messages</h2><br>
 
 <table>
-
     <tr>
         <th>Time</th>
         <th>Message</th>
@@ -17,6 +16,42 @@
     <tr>
         <td>{{status.timestamp}} </td>
         <td>{{status.message}}</td>
+        {% endfor %}
+        {% if status.image %}
+        <img src='{{status.image.url}}' style='max-width: 600;'>
+        {% endif %}
+
     </tr>
-    {% endfor %}
+
 </table>
+
+<form method = 'POST' action = "{% url 'post_status' profile.pk %}" enctype="multipart/form-data">
+    {% csrf_token %}
+    <table>
+    {% for field in create_status_form %}
+    <tr>
+        <th>{{field.name}}</th>
+        <td>{{field}}</td>
+    </tr>
+
+    {% endfor %}
+    <tr>
+        <td></td>
+        <td>
+    <input type="submit" name = 'Post Status' value = "Post Status!">
+        </td>
+        
+</tr>
+<tr>
+    <th>{% if profile.get_friends %}
+        {{profile.get_friends}}
+        {% else %}
+        {{profile.first_name}} doesn't have any friends.
+        {% endif %}
+        
+    </th>
+</tr>
+</table>
+</form>
+
+<a href = "{% url 'update' profile.pk %}"> Edit Profile</a>

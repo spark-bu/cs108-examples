@@ -1,4 +1,5 @@
 from django.db import models
+from django.urls import reverse
 
 # Create your models here.
 class Profile(models.Model):
@@ -8,6 +9,8 @@ class Profile(models.Model):
     city = models.TextField(blank=True)
     email_address = models.EmailField(blank=True)
     profile_image_url = models.URLField(blank=True)
+    friends = models.ManyToManyField("self")
+
 
     def __str__(self):
         ''' Return a string Representation of this object.'''
@@ -16,11 +19,22 @@ class Profile(models.Model):
     def get_status_message(self):
         status = StatusMessage.objects.filter(profile=self.pk)
         return status
+    
+    def get_absolute_url(self):
+        return reverse("profile", kwargs={"pk": self.pk})
+    def get_friends(self):
+        queryset = self.friends.all().exclude(pk=self.pk)
+        return queryset
+    def get_news_feed(self):
+        news = StatusMessage.objects.all().order_by("-timestamp")
+        return news
+
 
 class StatusMessage(models.Model):
-    timestamp = models.TimeField(blank = True)
+    timestamp = models.DateTimeField(auto_now_add=True)
     message = models.TextField(blank = True)
     profile = models.ForeignKey('Profile', on_delete="CASCADE")
+    image = models.ImageField(blank =True)
 
     def __str__(self):
         ''' Return a string Representation of this object.'''

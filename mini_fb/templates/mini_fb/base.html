@@ -1,0 +1,16 @@
+<html>
+    <head>
+        <title>Mini Facebook</title>
+    </head>
+    <body>
+        <header>
+            <a href = "{% url 'home' %}"> Mini Facebook Home</a>
+            <a href = "{% url 'create_profile' %}"> Create new Profile</a>
+            
+        </header>
+        <hr>
+
+        {% block content %}
+        {% endblock %}
+    </body>
+</html>
