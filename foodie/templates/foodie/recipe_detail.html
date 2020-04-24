@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+{% block content %}
+{% load static %}
+        <!-- Single Content -->
+        <div id="content" class="site-content center-relative">
+            <div class="single-post-wrapper content-1070 center-relative">
+
+                <article class="center-relative">
+                    <h1 class="entry-title">
+                        {{ post.title }}
+                    </h1>
+                    <div class="post-info content-660 center-relative">
+                        <div class="cat-links">
+                            <ul>
+                                <li><a href="#">
+                                    {% for t in post.category.all %}
+                                    {{ t }}
+                                    {% if not forloop.last %}
+                                    ,
+                                    {% endif %}
+                                    {% endfor %}
+                                </a></li>
+                            </ul>
+                        </div>
+                        <div class="entry-date published">{{ post.timestamp }}</div>
+                        <div class="clear"></div>
+                    </div>
+
+                    <div class="entry-content">
+                        <div class="content-wrap content-660 center-relative">
+                            {% if post.image_of_food %}
+                        <div class = "post-full-width"></div>
+                            <img src = "{{ post.image_of_food.url }}">
+                        
+                        {% endif %}
+                            {{ post.recipe|linebreaks }}
+                            <div class="clear"></div>
+                        </div>
+                        <a href="{% url 'update' post.pk %}">Update the Recipe</a>
+                        
+                    </div>
+                    <div class="clear"></div>
+                </article>
+            </div>
+        </div>
+
+{% endblock %}
