@@ -2,7 +2,7 @@ from django.shortcuts import render
 from django.views.generic import ListView, DetailView, UpdateView
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.shortcuts import redirect
-from django.urls import reverse
+from django.urls import reverse, reverse_lazy
 from .models import Type, Recipe
 from .forms import CreateRecipeForm, UpdateRecipeForm
 # Create your views here.
@@ -38,3 +38,9 @@ class UpdateRecipeView(UpdateView):
     form_class = UpdateRecipeForm
     template_name = "foodie/update_recipe_form.html"
     queryset = Recipe.objects.all()
+
+class DeleteRecipeView(DeleteView):
+    model = Recipe
+    template_name = 'foodie/delete_recipe_form.html'
+    success_url = reverse_lazy('home')
+

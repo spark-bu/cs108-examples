@@ -36,7 +36,8 @@
                             {{ post.recipe|linebreaks }}
                             <div class="clear"></div>
                         </div>
-                        <a href="{% url 'update' post.pk %}">Update the Recipe</a>
+                        <a href="{% url 'update' post.pk %}">(Click to update)</a><br>
+                        <a href="{% url 'delete' post.pk %}">(Click to delete)</a>
                         
                     </div>
                     <div class="clear"></div>
