@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% block content %}
+{% load static %}
+        <!-- Single Content -->
+        <div id="content" class="site-content center-relative">
+            <div class="single-post-wrapper content-1070 center-relative">
+
+                <article class="center-relative">
+                   <h2>Create new Recipe</h2>
+                   <form method = "POST">
+                       {% csrf_token %}
+                       <table>
+                           {{ form.as_table }}
+                       </table>
+                       <input type = "submit" value = "Delete">
+                   </form>
+                    <div class="clear"></div>
+                </article>
+            </div>
+        </div>
+{% endblock %}
