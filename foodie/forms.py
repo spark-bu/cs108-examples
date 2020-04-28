@@ -1,3 +1,9 @@
+'''
+Author: Soo Whan Park
+Email: spark96@bu.edu
+Filename: forms.py
+Description: create the forms for the views
+'''
 from django import forms
 from .models import Type, Recipe
 
