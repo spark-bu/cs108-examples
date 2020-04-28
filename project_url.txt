@@ -1,1 +1,1 @@
-https://rocky-castle-37300.herokuapp.com/foodie/post/9
+https://rocky-castle-37300.herokuapp.com/foodie
